@@ -1,4 +1,5 @@
 #include "StructGenerator.h"
+#include "ExpressionGenerator.h"
 
 extern string typeName[];
 
@@ -45,18 +46,36 @@ void TryInitialization(CompoundImpl* aStruct) {
     cout << aStruct->getInitialization() << endl;
 }
 
+void TryGetExpression()
+{
+    vector<TypeBase*> simpleType;
+    vector<Variable> context;
+    initSimpleType(&simpleType);
+    addContext(&context, &simpleType);
+    cout << getExpression(context) << endl;
+}
+
 int main() {
     printf("Try GetNewCompoundType!\n");
     CompoundImpl* newStruct = NULL;
+    srand(time(NULL));
     try{
+        printf("-----  Try TryGetNewCompoundType   -----\n");
         newStruct = TryGetNewCompoundType();
     }catch(...) {
         printf("Try GetNewCompoundType failed !!\n");
     }
     try{
+        printf("-----  Try TryInitialization   -----\n");
         if(newStruct != NULL)
             TryInitialization(newStruct);
     }catch(...) {
         printf("Try Initialization failed !!\n");
+    }
+    try{
+        printf("-----  Try GetExpression   -----\n");
+        TryGetExpression();
+    }catch(...) {
+        printf("Try GetExpression failed!\n");
     }
 }

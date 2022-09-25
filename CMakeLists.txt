@@ -7,6 +7,8 @@ set(sourceCode
     Random.cpp
     StructGenerator.h
     StructGenerator.cpp
+    ExpressionGenerator.h
+    ExpressionGenerator.cpp
     common/common.h
     common/common.cpp
     common/type.h

@@ -18,4 +18,35 @@ private:
 
 string getExpression(vector<Variable>);
 
+enum eTermType
+{
+	// eConstant,
+	eVariable,
+	// eUnaryExpr,
+	// eBinaryExpr,
+	// eFunction,
+	eAssignment,
+	eCommaExpr,
+	eLhs
+};
+
+enum intExp
+{
+    eAdd,
+    eSub,
+    eMult,
+    eDiv,
+    eMod,
+    eLsh,
+    eRsh
+};
+
+enum floatExp
+{
+    eAddF,
+    eSubF,
+    eMultF,
+    eDivF
+};
+
 #endif
