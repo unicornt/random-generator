@@ -34,7 +34,7 @@ void GetAllType(vector<Variable>*context, vector<TypeBase*>*AllType)
 
 const int intExpN = 7;
 const int floatExpN = 4;
-int f2ip = 17;
+int f2ip = 15;
 
 string intExpString[] = {
     " + ",
@@ -71,20 +71,20 @@ string GenerateIntExp(vector<Variable>*context, vector<Variable>*intContext, vec
     if(rand() % 10 < 5)
         return GetRandomVar(intContext);
     // printf("Get int Expr 2\n");
-    return (rand() % 20 < f2ip ? "(" + GenerateIntExp(context, intContext, floatContext) + ")" : GetRandomVar(intContext)) + 
+    return (rand() % 20 < f2ip ? ("(" + GenerateIntExp(context, intContext, floatContext) + ")") : ("(int)(" + GenerateFloatExp(context, intContext, floatContext) + ")")) +
         GetRandomExpr(0) + 
-        (rand() % 20 < f2ip ? "(" + GenerateIntExp(context, intContext, floatContext) + ")" : GetRandomVar(intContext));
+        (rand() % 20 < f2ip ? ("(" + GenerateIntExp(context, intContext, floatContext) + ")") : ("(int)(" + GenerateFloatExp(context, intContext, floatContext) + ")") );
 }
 
 string GenerateFloatExp(vector<Variable>*context, vector<Variable>*intContext, vector<Variable>*floatContext)
 {
-    // printf("Generate float exp\n");
-    if(rand() % 10 < 6)
+    printf("Generate float exp\n");
+    if(rand() % 10 < 5)
         return GetRandomVar(intContext);
     // printf("Generate float exp 2\n");
-    return (rand() % 20 >= f2ip ? "(" + GenerateFloatExp(context, intContext, floatContext) + ")" : GetRandomVar(floatContext)) +
+    return (rand() % 20 >= f2ip ? ("(" + GenerateFloatExp(context, intContext, floatContext) + ")") : ("(" + GenerateIntExp(context, intContext, floatContext) + ")")) +
         GetRandomExpr(1) +
-        (rand() % 20 >= f2ip ? "(" + GenerateFloatExp(context, intContext, floatContext) + ")" : GetRandomVar(floatContext));
+        (rand() % 20 >= f2ip ? ("(" + GenerateFloatExp(context, intContext, floatContext) + ")") : ("(" + GenerateIntExp(context, intContext, floatContext) + ")"));
 }
 
 void SplitIntAndFloat(vector<Variable>*context, vector<Variable>*intContext, vector<Variable>*floatContext)

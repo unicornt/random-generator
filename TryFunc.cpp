@@ -28,6 +28,9 @@ void addContext(vector<Variable>* context, vector<TypeBase*>* simpleType)
     n = new Variable("uchar", "f5");
     n->type_ptr = (*simpleType)[6];
     context->push_back(*n);
+    n = new Variable("float", "f6");
+    n->type_ptr = (*simpleType)[10];
+    context->push_back(*n);
 }
 
 CompoundImpl* TryGetNewCompoundType() {

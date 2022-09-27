@@ -49,4 +49,7 @@ enum floatExp
     eDivF
 };
 
+string GenerateFloatExp(vector<Variable>*context, vector<Variable>*intContext, vector<Variable>*floatContext);
+string GenerateIntExp(vector<Variable>*context, vector<Variable>*intContext, vector<Variable>*floatContext);
+
 #endif
